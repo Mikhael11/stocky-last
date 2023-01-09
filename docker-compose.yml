@@ -1,0 +1,49 @@
+version: "3.8"
+services:
+  server:
+  
+    environment:
+    - COMPOSER_ALLOW_SUPERUSER=1
+    build:
+      context: .
+      dockerfile: ./Dockerfile.dev
+    container_name: server
+    dns:
+      - 8.8.8.8
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/app
+      - /app/vendor
+    #depends_on:
+    # - mysql
+    #links:
+    #  - mysql
+  mysql:
+    image: mysql
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: stockdb
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: MYSQL_ALLOW_EMPTY_PASSWORD=1
+    ports:
+      - 33066:3306
+    volumes:
+      - ./mysql/init.sql:/data/application/init.sql
+      - mysql_data:/var/lib/mysql
+  client:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.node
+    container_name: client
+    dns:
+      - 8.8.8.8
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    depends_on:
+      - "server"
+volumes:
+  mysql_data:
