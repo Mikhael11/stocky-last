@@ -650,12 +650,11 @@
         <div id="invoice-POS">
           <div style="max-width:400px;margin:0px auto">
           <div class="info" >
-            <h2 class="text-center">{{invoice_pos.setting.CompanyName}}</h2>
+            <h2 class="text-center">Marina Shop</h2>
 
             <p>
                 <span>{{$t('date')}} : {{invoice_pos.sale.date}} <br></span>
                 <span v-show="pos_settings.show_address">{{$t('Adress')}} : {{invoice_pos.setting.CompanyAdress}} <br></span>
-                <span v-show="pos_settings.show_email">{{$t('Email')}} : {{invoice_pos.setting.email}} <br></span>
                 <span v-show="pos_settings.show_phone">{{$t('Phone')}} : {{invoice_pos.setting.CompanyPhone}} <br></span>
                 <span v-show="pos_settings.show_customer">{{$t('Customer')}} : {{invoice_pos.sale.client_name}} <br></span>
               </p>
@@ -743,20 +742,11 @@
 
           <div id="legalcopy" class="ml-2">
             <p class="legal" v-show="pos_settings.show_note">
-               <strong>{{pos_settings.note_customer}}</strong>
-            </p>
-            <div id="bar" v-show="pos_settings.show_barcode">
-              <barcode
-                class="barcode"
-                :format="barcodeFormat"
-                :value="invoice_pos.sale.Ref"
-                textmargin="0"
-                fontoptions="bold"
-                fontSize= "15"
-                height= "25"
-                width= "1"
-              ></barcode>
-            </div>
+                  <strong>Wait You again in marina's shop</strong>  
+                </p>
+                <div id="bar" v-show="pos_settings.show_barcode">
+                  <strong>for management systems : 01200513381 , 01114415345</strong> 
+                </div>
             </div>
           </div>
         </div>

@@ -147,7 +147,7 @@
                     (
                     <span
                       class="bold"
-                    >{{currentUser.currency}} {{formatNumber((infos.sales.sum?infos.sales.sum:0),2)}}</span>
+                    >{{currentUser.currency}} {{formatNumber((infos.total_revenue?infos.total_revenue:0),2)}}</span>
                     {{$t('Sales')}})
                     - (
                     <span
@@ -229,7 +229,7 @@
                   <p class="text-muted mt-2 mb-2">العشور</p>
                   <p
                     class="text-primary text-24 line-height-1 m-0"
-                  >{{currentUser.currency}} {{formatNumber((infos.payment_received?infos.payment_received:0),2)}}</p>
+                  >{{currentUser.currency}} {{formatNumber((infos.profit?infos.profit*0.1:0),2)}}</p>
                 </div>
 
                 <div class="card-footer">
@@ -237,13 +237,11 @@
                     (
                     <span
                       class="bold"
-                    >{{currentUser.currency}} {{formatNumber((infos.paiement_sales.sum?infos.paiement_sales.sum:0),2)}}</span>
-                    {{$t('PaymentsSales')}}
-                    +
-                    <span
-                      class="bold"
-                    >{{currentUser.currency}} {{formatNumber((infos.PaymentPurchaseReturns.sum?infos.PaymentPurchaseReturns.sum:0),2)}}</span>
-                    {{$t('PurchasesReturn')}})
+                    >{{currentUser.currency}} {{formatNumber((infos.profit?infos.profit:0),2)}}</span>
+                    {{$t('10%')}})
+                   
+                    
+              
                   </p>
                 </div>
               </div>
